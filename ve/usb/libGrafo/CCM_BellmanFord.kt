@@ -92,10 +92,6 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
             throw RunTimeException("CCM_BellmanFord.costo(). El vertice $v no pertenece al grafo")
         }
 
-        if (!this.existeUnCamino(v)) {
-            throw RunTimeException("CCM_BellmanFord.costo(): No existe camino desde $s hasta $v")
-        }
-
         return dist[v]
     }
 

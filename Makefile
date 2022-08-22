@@ -28,7 +28,9 @@ libGrafoKt.jar: $(GLIB)/Color.class\
 		$(GLIB)/PrimAMC.class\
 		$(GLIB)/CCM_BellmanFord.class\
 		$(GLIB)/CCM_Dijkstra.class\
-		$(GLIB)/AEstrella.class
+		$(GLIB)/AEstrella.class\
+		$(GLIB)/FloydWarshall.class\
+		$(GLIB)/Johnson.class
 
 	jar -cvf $@ $(GLIB)/*.class 
 
@@ -107,5 +109,10 @@ $(GLIB)/CCM_Dijkstra.class: $(GLIB)/CCM_Dijkstra.kt
 $(GLIB)/AEstrella.class: $(GLIB)/AEstrella.kt
 	$(KC) $(KFLAG) $(GLIB): $(GLIB)/AEstrella.kt
 
+$(GLIB)/FloydWarshall.class: $(GLIB)/FloydWarshall.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/FloydWarshall.kt
+
+$(GLIB)/Johnson.class: $(GLIB)/Johnson.kt
+	$(KC) $(KFLAG) $(GLIB): $(GLIB)/Johnson.kt
 clean:
 	rm -rf libGrafoKt.jar META-INF $(GLIB)/*.class

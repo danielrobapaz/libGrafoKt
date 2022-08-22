@@ -82,11 +82,26 @@ public class CCM_Dijkstra(val g: GrafoDirigidoCosto, val s: Int) {
             throw RunTimeException("CCM_BellmanFord.costo(). El vertice $v no pertenece al grafo")
         }
 
-        if (!this.existeUnCamino(v)) {
-            throw RunTimeException("CCM_BellmanFord.costo(): No existe camino desde $s hasta $v")
+        return dist[v]
+    }
+
+    /* 
+        Dado un vertice, se devuelve el predecesor del vertice
+
+        {P: El vertice v pertenece al grafo}
+        {Q: true}
+
+        Input: v -> Entero que representa un vertice del grafo
+        Output: El predecesor del vertice dado en el camino de costo minimo
+
+        Tiempo de ejecucion O(1)
+    */
+    fun obtenerPredecesor(u: Int): Int? {
+        if (u < 0 || u >= g.obtenerNumeroDeVertices()) {
+            throw RunTimeException("CCM_Dijkstra.obtenerNumeroDeVertices(): El vertice $s no pertenece al grafo")
         }
 
-        return dist[v]
+        return pred[u]
     }
 
     /* 
