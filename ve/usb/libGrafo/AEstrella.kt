@@ -69,8 +69,8 @@ public class AEstrella(val g: GrafoDirigidoCosto,
          closedContains[u] = true
 
          for (lado in g.adyacentes(u)) {
-            if (!closedContains[u]) {
-               val v: Int = lado.b
+            val v: Int = lado.b
+            if (!closedContains[v]) {
                val fNew: Double = fHat[u] - hHat(u) + lado.obtenerCosto() + hHat(v)
 
                if (!openQueueContains[v]) {

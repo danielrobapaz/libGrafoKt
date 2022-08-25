@@ -57,9 +57,6 @@ public class CCM_BellmanFord(val g: GrafoDirigidoCosto, val s: Int) {
     // Retorna cierto si hay un ciclo negativo en el camino hasta los vértices alcanzables desde s
     fun tieneCicloNegativo() : Boolean = ciclo
 
-    // Retorna los arcos del ciclo negativo con la forma <u, v>, <v, w>, ... ,<y, x>, <x, u>  
-    //fun obtenerCicloNegativo() : Iterable<ArcoCosto> { }
-
     /* 
         Determina si existe un camino desde el vertice fuente s
         hasta el vertice v

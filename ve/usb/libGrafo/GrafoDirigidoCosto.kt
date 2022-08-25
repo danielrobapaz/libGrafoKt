@@ -203,6 +203,38 @@ public class GrafoDirigidoCosto : Grafo {
         return listasAdy[v].asIterable()
     }
 
+    /* 
+        Obtenemos la matriz de costos asociada al grafo dirigido
+
+        Para esta matriz, para cada u, v en 0 <= u, v < nVertices
+        Si el lado (u, v) pertenece al grafo M[u][v] = costo del lado (u,v).
+        Si no existe M[u][v] = infinito.
+
+        Ademas, para M[u][u] = 0
+
+        {P: true}
+        {Q: true}
+
+        Output: Un matriz nVerticesxnVertices de valores reales
+
+        Tiempo de ejecucion O(nVertices² + nLados)
+    */
+    fun obtenerMatrizDeCostosAsociada(): Array<Array<Double>> {
+        val m: Array<Array<Double>> = Array<Array<Double>>(nVertices, {Array(nVertices, {Double.POSITIVE_INFINITY})})
+        
+        for (arco in listaArcos) {
+            val u: Int = arco.a 
+            val v: Int = arco.b 
+            m[u][v] = arco.obtenerCosto()
+        }
+
+        for (i in 0 until nVertices) {
+            m[i][i] = 0.0
+        }
+
+        return m
+    }
+
     // Retorna todos los lados del digrafo con costo
     override operator fun iterator() : Iterator<ArcoCosto> = listaArcos.iterator()
 

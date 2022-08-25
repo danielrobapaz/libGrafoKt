@@ -36,16 +36,26 @@ public class FloydWarshall(val W : Array<Array<Double>>) {
             }
         }
 
+        for (i in 0 until nVer) dMatriz[i][i] = 0.0 
+
         for (k in 0 until nVer) {
             for (i in 0 until nVer) {
                 for (j in 0 until nVer) {
-                    if (dMatriz[i][j] > dMatriz[i][k] + dMatriz[k][i]) {
-                        dMatriz[i][j] = dMatriz[i][k] + dMatriz[k][i]
+                    if (dMatriz[i][j] > dMatriz[i][k] + dMatriz[k][j] && i != j) {
+                        dMatriz[i][j] = dMatriz[i][k] + dMatriz[k][j]
                         predMatriz[i][j] = predMatriz[k][j]
                     }
                 }
             }
         }
+    }
+
+    private fun min(a: Double, b: Double): Double {
+        if (a < b) {
+            return a
+        }
+
+        return b
     }
 
     // Retorna la matriz con las distancias de los caminos de costo mínimo
